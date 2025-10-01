@@ -14,10 +14,10 @@ def train_model(model_type='mlp', epochs=50, batch_size=32, seed=42):
     
     # Criar modelo
     if model_type == 'mlp':
-        save_path = "../models/mlp_best.h5"
+        save_path = "../models/mlp_model.h5"
         model = mlp(input_shape=(224, 224, 3), num_classes=2)
     elif model_type == 'cnn':
-        save_path = "../models/cnn_best.h5"
+        save_path = "../models/cnn_model.h5"
         model = cnn(input_shape=(224, 224, 3), num_classes=2)
     
     # Compilar
