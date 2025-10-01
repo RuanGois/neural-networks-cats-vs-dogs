@@ -15,7 +15,7 @@ def download_prepare():
 
     return raw_train, raw_test, metadata
 
-def preprocess_image(image, label, img_size=(224, 224)):
+def preprocess_image(image, label, img_size=(128, 128)):
     """Pré-processamento básico das imagens"""
 
     # Redimensionar
@@ -26,7 +26,7 @@ def preprocess_image(image, label, img_size=(224, 224)):
     
     return image, label
 
-def get_datasets(batch_size=32, img_size=(224, 224)):
+def get_datasets(batch_size=32, img_size=(128, 128)):
     """Retorna datasets pré-processados"""
     raw_train, raw_test, metadata = download_prepare()
 
@@ -34,7 +34,6 @@ def get_datasets(batch_size=32, img_size=(224, 224)):
     train_dataset = raw_train.map(
         lambda x, y: preprocess_image(x, y, img_size)
     ).batch(batch_size).prefetch(tf.data.AUTOTUNE)
-
 
     test_dataset = raw_test.map(
         lambda x, y: preprocess_image(x, y, img_size)
